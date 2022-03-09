@@ -140,7 +140,11 @@ TEST_CASE("Good input") {
     // Capital letter
     CHECK(nospaces(mat(1, 1, 'D', '+')) == nospaces("D"));
 
-    CHECK(nospaces(mat(2, 1, '$', '+')) == nospaces("$$"));
+    CHECK(nospaces(mat(3, 1, '$', '+')) == nospaces("$$$"));
+    // Same simbol
+    CHECK(nospaces(mat(3, 3, '$', '$')) == nospaces("$$$\n"
+                                                    "$$$\n"
+                                                    "$$$"));
 
 
 }
