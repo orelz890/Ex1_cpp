@@ -114,7 +114,7 @@ TEST_CASE("Good input") {
     CHECK(nospaces(mat(5, 3, '$', '+')) == nospaces("&&&&&\n"
                                                     "&+++&\n"
                                                     "&&&&&"));
-
+    // Numbers and letters
     CHECK(nospaces(mat(3, 5, '0', '~')) == nospaces("000\n"
                                                     "0~0\n"
                                                     "0~0\n"
@@ -137,7 +137,9 @@ TEST_CASE("Good input") {
 
     CHECK(nospaces(mat(1, 1, '$', '+')) == nospaces("$\n"
                                                     "$"));
-    CHECK(nospaces(mat(1, 1, '$', '+')) == nospaces("$"));
+    // Capital letter
+    CHECK(nospaces(mat(1, 1, 'D', '+')) == nospaces("D"));
+
     CHECK(nospaces(mat(2, 1, '$', '+')) == nospaces("$$"));
 
 
@@ -169,11 +171,11 @@ TEST_CASE("Bad input") {
     }
     // More nagetive input were one is positive
     CHECK_THROWS(mat(-1, 3, '$', '%'));
-    CHECK_THROWS(mat(-2, 3, '$', '%'));
+    CHECK_THROWS(mat(-2, 1, '$', '%'));
 
     // Empty case(row = 0 or col = 0 but not both)
     for(int i = 1; i < 10; i++){
-        // Checking both legal(Odd) and even values
+        // Checking both legal(Odd) and even values with zero
         CHECK_THROWS(mat(0, i, '$', '%'));
         CHECK_THROWS(mat(i, 0, '$', '%'));
     }
